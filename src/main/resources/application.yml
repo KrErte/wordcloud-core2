@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wordcloud
+    username: wordcloud
+    password: wordcloud
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+wordcloud:
+  rabbitmq:
+    exchange: wordcloud.exchange
+    queue: wordcloud.text.queue
+    routing-key: wordcloud.text
+
+server:
+  port: 8080
